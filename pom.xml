@@ -53,6 +53,12 @@
     </dependencies>
 
     <build>
+        <sourceDirectory>ReliefLink/src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>ReliefLink/src/main/resources</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
