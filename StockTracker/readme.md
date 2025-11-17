@@ -4,6 +4,37 @@
 
 ReliefLink is a web-based crisis relief platform that connects donors with people in need during emergencies and disasters. The application facilitates the donation and request of essential supplies (food, medicine, clothing, shelter, water, medical supplies) by matching donors with requesters based on category, location, and urgency levels. The platform includes role-based access for donors, requesters, volunteers, and administrators, with features for tracking donations, requests, and successful matches.
 
+## Features
+
+- **User Registration & Authentication**: Role-based access (Donor, Requester, Volunteer, Admin)
+- **Donation Management**: Create and track donation offerings across 7 categories
+- **Request Management**: Submit and manage resource requests with urgency levels
+- **Smart Matching System**: Algorithm pairs donations with requests based on category, location, and quantity
+- **Admin Dashboard**: User oversight, system backup, and complete system reset
+- **Emergency Guidelines**: Static emergency contact information and disaster preparedness guides
+- **Responsive Design**: Mobile-friendly interface with compact layout
+- **Real-time Activity Feed**: Live updates on donations, requests, and matches
+
+## Technology Stack
+
+### Backend
+- **Java 17**
+- **Spring Boot 3.1.5** (Web MVC, Thymeleaf, DevTools, Actuator)
+- **Maven** for dependency management
+- **In-memory storage** (ConcurrentHashMap for thread-safe data persistence)
+
+### Frontend
+- **Vanilla JavaScript** (No frameworks for lightweight deployment)
+- **HTML5** with server-rendered templates
+- **CSS3** with responsive design and modern UI components
+- **Fetch API** for client-server communication
+
+### Key Dependencies
+- Spring Boot Starter Web
+- Spring Boot Starter Thymeleaf
+- Jackson Databind for JSON processing
+- Spring Boot DevTools (development only)
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
@@ -155,3 +186,216 @@ for each unmatched donation:
   - Location: Central Command
 
 **Design Decision**: The absence of external service dependencies makes the application more resilient during crisis situations when internet connectivity or third-party services may be unreliable. In-memory storage allows deployment without database infrastructure setup.
+
+## Installation & Setup
+
+### Prerequisites
+
+Before running ReliefLink, ensure you have the following installed:
+
+- **Java 17** or higher
+- **Maven 3.6+** (for building the project)
+- **Git** (for cloning the repository)
+
+### Local Development Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/UttamSingh809/Relief-Link-App-1.git
+   cd Relief-Link-App-1
+   ```
+
+2. **Navigate to the project directory:**
+   ```bash
+   cd StockTracker
+   ```
+
+3. **Build the application:**
+   ```bash
+   mvn clean install
+   ```
+
+4. **Run the application:**
+   ```bash
+   mvn spring-boot:run
+   ```
+
+5. **Access the application:**
+   - Open your browser and go to: `http://localhost:5000`
+   - Default admin login: `admin` / `admin123`
+
+### Running with Ngrok (Public Access)
+
+To share your local application publicly using Ngrok:
+
+1. **Install Ngrok:**
+   - Download from: https://ngrok.com/download
+   - Or install via package manager:
+     ```bash
+     # Windows (using Chocolatey)
+     choco install ngrok
+
+     # macOS
+     brew install ngrok
+
+     # Linux
+     snap install ngrok
+     ```
+
+2. **Authenticate Ngrok (optional but recommended):**
+   ```bash
+   ngrok config add-authtoken YOUR_AUTH_TOKEN
+   ```
+   Get your auth token from: https://dashboard.ngrok.com/get-started/your-authtoken
+
+3. **Start the Spring Boot application:**
+   ```bash
+   cd StockTracker
+   mvn spring-boot:run
+   ```
+
+4. **In a new terminal, start Ngrok:**
+   ```bash
+   ngrok http 5000
+   ```
+
+5. **Copy the Ngrok URL:**
+   - Ngrok will provide a URL like: `https://abcd1234.ngrok.io`
+   - Share this URL to give others access to your local application
+
+### Docker Setup (Alternative)
+
+If you prefer using Docker:
+
+1. **Create a Dockerfile in the project root:**
+   ```dockerfile
+   FROM openjdk:17-jdk-slim
+   WORKDIR /app
+   COPY pom.xml .
+   COPY src ./src
+   RUN apt-get update && apt-get install -y maven && mvn clean package -DskipTests
+   EXPOSE 5000
+   CMD ["java", "-jar", "target/relief-link-1.0.0.jar"]
+   ```
+
+2. **Build and run:**
+   ```bash
+   docker build -t relieflink .
+   docker run -p 5000:5000 relieflink
+   ```
+
+## Usage Guide
+
+### First Time Setup
+1. Access the application at `http://localhost:5000`
+2. Login with admin credentials: `admin` / `admin123`
+3. Register new users or explore the system
+
+### User Roles
+- **Admin**: Full system access, user management, system reset
+- **Donor**: Can create and manage donations
+- **Requester**: Can create and manage requests
+- **Volunteer**: Limited access for coordination
+
+### Key Workflows
+1. **Making a Donation:**
+   - Login → Dashboard → Donate → Fill form → Submit
+2. **Requesting Resources:**
+   - Login → Dashboard → Request → Fill form → Submit
+3. **Finding Matches:**
+   - Login → Matches → Click "Find New Matches"
+4. **Admin Functions:**
+   - Login (admin) → Admin → View users, backup data, reset system
+
+## API Endpoints
+
+### Authentication
+- `POST /login` - User login
+- `POST /register` - User registration
+- `POST /logout` - User logout
+
+### Donations
+- `GET /api/donations` - List all donations
+- `POST /api/donations` - Create donation
+- `GET /api/donations/{id}` - Get donation details
+- `PUT /api/donations/{id}` - Update donation
+- `DELETE /api/donations/{id}` - Delete donation
+
+### Requests
+- `GET /api/requests` - List all requests
+- `POST /api/requests` - Create request
+- `GET /api/requests/{id}` - Get request details
+- `PUT /api/requests/{id}` - Update request
+- `DELETE /api/requests/{id}` - Delete request
+
+### Matches
+- `GET /api/matches` - List all matches
+- `POST /api/matches/find` - Find new matches
+- `GET /api/matches/{id}` - Get match details
+
+### Admin (Admin only)
+- `GET /api/admin/users` - List all users
+- `POST /api/admin/backup` - Backup system data
+- `POST /api/admin/reset` - Reset system
+
+## Configuration
+
+### Application Properties
+Key settings in `src/main/resources/application.properties`:
+- `server.port=5000` - Application port
+- `spring.application.name=ReliefLink` - Application name
+- `spring.thymeleaf.cache=false` - Disable template caching in development
+
+### Default Admin Account
+- Username: `admin`
+- Password: `admin123`
+- Role: ADMIN
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Port 5000 already in use:**
+   ```bash
+   # Find process using port 5000
+   netstat -ano | findstr :5000
+   # Kill the process or change port in application.properties
+   ```
+
+2. **Java version issues:**
+   ```bash
+   java -version  # Should show Java 17+
+   ```
+
+3. **Maven build fails:**
+   ```bash
+   mvn clean
+   mvn install
+   ```
+
+4. **Ngrok connection issues:**
+   - Ensure no firewall blocking connections
+   - Try different regions: `ngrok http 5000 --region=us`
+
+### Logs
+Application logs are available in the console when running `mvn spring-boot:run`. For more detailed logging, check the Spring Boot actuator endpoints.
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make your changes and test thoroughly
+4. Commit your changes: `git commit -am 'Add feature'`
+5. Push to the branch: `git push origin feature-name`
+6. Submit a pull request
+
+## License
+
+This project is open source and available under the MIT License.
+
+## Support
+
+For support or questions:
+- Create an issue on GitHub
+- Contact the development team
+- Check the troubleshooting section above
