@@ -1,9 +1,10 @@
-# TODO: Publish StockTracker to New GitHub Repo "Relief Link 2"
-
-- [x] Navigate to StockTracker directory and initialize Git if needed
-- [x] Add all files to Git
-- [x] Commit with initial message
-- [ ] Check if GitHub CLI (gh) is installed
-- [ ] Install GitHub CLI if not present
-- [ ] Create new public repository "relief-link-2" and push code
-- [ ] Verify repository creation and push success
+- [x] Update dashboard.html navbar to consistent order and initial styles
+- [x] Update donate.html navbar to consistent order and initial styles
+- [x] Update request.html navbar to consistent order and initial styles
+- [x] Update matches.html navbar to consistent order and initial styles
+- [x] Update guidelines.html navbar to consistent order and initial styles
+- [x] Update emergency-contacts.html navbar to consistent order and initial styles
+- [x] Update admin.html navbar to consistent order and initial styles
+- [x] Improve UI visibility with enhanced backgrounds and shadows
+- [x] Fix emergency page navbar to hide Request link for donors
+- [x] Enhance success message visibility for better user feedback
