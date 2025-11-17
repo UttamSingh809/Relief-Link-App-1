@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ReliefLink</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">ReliefLink</div>
+        <div class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/matches" id="matchesLink">Matches</a>
+            <a href="/guidelines" id="guidelinesLink">Guidelines</a>
+            <a href="/emergency-contacts" id="emergencyLink">Emergency</a>
+            <a href="/donate" id="donateLink">Donate</a>
+            <a href="/request" id="requestLink">Request</a>
+            <a href="/admin" id="adminLink" style="display:none;">Admin</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="welcomeBanner" class="welcome-banner">
+            <h1>Welcome back, <span id="userName">User</span>! <span id="roleEmoji">❤️</span></h1>
+            <p id="roleMessage">You’re making a difference</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Donor Panels -->
+            <div class="dashboard-panel" id="donorPanel1" style="display:none;">
+                <h2>Your Donations</h2>
+                <div id="donationsList" class="items-list"></div>
+            </div>
+            <div class="dashboard-panel" id="donorPanel2" style="display:none;">
+                <h2>Matching Requests Near You</h2>
+                <div id="nearbyRequests" class="items-list"></div>
+            </div>
+
+            <!-- Requester Panels -->
+            <div class="dashboard-panel" id="requesterPanel1" style="display:none;">
+                <h2>Your Requests</h2>
+                <div id="requestsList" class="items-list"></div>
+            </div>
+            <div class="dashboard-panel" id="requesterPanel2" style="display:none;">
+                <h2>Available Donations Near You</h2>
+                <div id="nearbyDonations" class="items-list"></div>
+            </div>
+
+            <!-- Admin Panel -->
+            <div class="dashboard-panel" id="adminPanel" style="display:none;">
+                <h2>System Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 id="totalUsers">0</h3>
+                        <p>Total Users</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="pendingRequests">0</h3>
+                        <p>Pending Role Requests</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="totalMatches">0</h3>
+                        <p>Total Matches</p>
+                    </div>
+                </div>
+                <div class="admin-actions">
+                    <button id="findMatchesBtn" class="btn btn-primary">Find New Matches</button>
+                    <button id="backupBtn" class="btn btn-secondary">Backup Data</button>
+                    <button id="resetBtn" class="btn btn-danger">Reset System</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Feed -->
+        <div class="activity-feed">
+            <h2>Recent Activity</h2>
+            <div id="activityList" class="activity-list"></div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="cta-section" id="donorCTA" style="display:none;">
+            <button class="btn btn-primary btn-large" onclick="window.location.href='/donate'">
+                ➕ Post New Donation
+            </button>
+        </div>
+        <div class="cta-section" id="requesterCTA" style="display:none;">
+            <button class="btn btn-primary btn-large" onclick="window.location.href='/request'">
+                🆘 Request Help
+            </button>
+        </div>
+    </div>
+
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

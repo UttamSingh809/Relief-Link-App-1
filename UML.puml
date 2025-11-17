@@ -1,0 +1,282 @@
+@startuml
+class com.relieflink.model.Request {
+- Long id
+- Long requesterId
+- String requesterName
+- ItemCategory category
+- String itemName
+- int quantity
+- String location
+- UrgencyLevel urgency
+- String description
+- boolean matched
+- LocalDateTime createdAt
++ Long getId()
++ void setId(Long)
++ Long getRequesterId()
++ void setRequesterId(Long)
++ String getRequesterName()
++ void setRequesterName(String)
++ ItemCategory getCategory()
++ void setCategory(ItemCategory)
++ String getItemName()
++ void setItemName(String)
++ int getQuantity()
++ void setQuantity(int)
++ String getLocation()
++ void setLocation(String)
++ UrgencyLevel getUrgency()
++ void setUrgency(UrgencyLevel)
++ String getDescription()
++ void setDescription(String)
++ boolean isMatched()
++ void setMatched(boolean)
++ LocalDateTime getCreatedAt()
++ void setCreatedAt(LocalDateTime)
+}
+
+
+class com.relieflink.ReliefLinkApplication {
++ {static} void main(String[])
+}
+
+enum com.relieflink.model.UrgencyLevel {
++  CRITICAL
++  HIGH
++  MEDIUM
++  LOW
+}
+
+class com.relieflink.controller.DashboardController {
++ String dashboard(HttpServletRequest)
++ String donatePage(HttpServletRequest)
++ String requestPage(HttpServletRequest)
++ String matchesPage(HttpServletRequest)
++ String adminPage(HttpServletRequest)
++ String guidelinesPage(HttpServletRequest)
++ String emergencyContactsPage(HttpServletRequest)
+}
+
+class com.relieflink.config.AuthInterceptor {
++ boolean preHandle(HttpServletRequest,HttpServletResponse,Object)
+}
+
+enum com.relieflink.model.ItemCategory {
++  FOOD
++  MEDICINE
++  CLOTHING
++  SHELTER
++  WATER
++  MEDICAL_SUPPLIES
++  OTHER
+}
+
+class com.relieflink.model.User {
+- Long id
+- String username
+- String password
+- String email
+- String fullName
+- String location
+- UserRole role
+- LocalDateTime createdAt
++ Long getId()
++ void setId(Long)
++ String getUsername()
++ void setUsername(String)
++ String getPassword()
++ void setPassword(String)
++ String getEmail()
++ void setEmail(String)
++ String getFullName()
++ void setFullName(String)
++ String getLocation()
++ void setLocation(String)
++ UserRole getRole()
++ void setRole(UserRole)
++ LocalDateTime getCreatedAt()
++ void setCreatedAt(LocalDateTime)
+}
+
+
+enum com.relieflink.model.UserRole {
++  ADMIN
++  DONOR
++  REQUESTER
++  VOLUNTEER
+}
+
+class com.relieflink.controller.ApiController {
+- DonationService donationService
+- RequestService requestService
+- MatchingService matchingService
+- DataStore dataStore
++ Donation createDonation(Donation,HttpSession)
++ List<Donation> getAllDonations()
++ Request createRequest(Request,HttpSession)
++ List<Request> getAllRequests()
++ List<Match> findMatches()
++ List<Match> getAllMatches()
++ String resetSystem()
++ Map<String,Object> backupData()
++ List<User> getAllUsers()
+}
+
+
+class com.relieflink.service.AuthService {
+- DataStore dataStore
++ Optional<User> login(String,String)
++ User register(User)
++ boolean usernameExists(String)
+}
+
+
+class com.relieflink.repository.DataStore {
+- Map<Long,User> users
+- Map<Long,Donation> donations
+- Map<Long,Request> requests
+- Map<Long,Match> matches
+- AtomicLong userIdCounter
+- AtomicLong donationIdCounter
+- AtomicLong requestIdCounter
+- AtomicLong matchIdCounter
++ User saveUser(User)
++ Optional<User> findUserById(Long)
++ Optional<User> findUserByUsername(String)
++ List<User> findAllUsers()
++ void deleteUser(Long)
++ Donation saveDonation(Donation)
++ Optional<Donation> findDonationById(Long)
++ List<Donation> findAllDonations()
++ List<Donation> findUnmatchedDonations()
++ Request saveRequest(Request)
++ Optional<Request> findRequestById(Long)
++ List<Request> findAllRequests()
++ List<Request> findUnmatchedRequests()
++ Match saveMatch(Match)
++ List<Match> findAllMatches()
++ void resetAll()
++ Map<String,Object> exportData()
+}
+
+
+class com.relieflink.model.Match {
+- Long id
+- Long donationId
+- Long requestId
+- String donorName
+- String requesterName
+- ItemCategory category
+- String itemName
+- int quantity
+- String location
+- UrgencyLevel urgency
+- LocalDateTime matchedAt
++ Long getId()
++ void setId(Long)
++ Long getDonationId()
++ void setDonationId(Long)
++ Long getRequestId()
++ void setRequestId(Long)
++ String getDonorName()
++ void setDonorName(String)
++ String getRequesterName()
++ void setRequesterName(String)
++ ItemCategory getCategory()
++ void setCategory(ItemCategory)
++ String getItemName()
++ void setItemName(String)
++ int getQuantity()
++ void setQuantity(int)
++ String getLocation()
++ void setLocation(String)
++ UrgencyLevel getUrgency()
++ void setUrgency(UrgencyLevel)
++ LocalDateTime getMatchedAt()
++ void setMatchedAt(LocalDateTime)
+}
+
+
+class com.relieflink.config.WebConfig {
+- AuthInterceptor authInterceptor
++ void addInterceptors(InterceptorRegistry)
+}
+
+
+class com.relieflink.controller.AuthController {
+- AuthService authService
++ String index()
++ String loginPage()
++ String login(String,String,HttpSession)
++ String registerPage()
++ String register(User)
++ String logout(HttpSession)
+}
+
+
+class com.relieflink.service.MatchingService {
+- DataStore dataStore
++ List<Match> findMatches()
+- boolean isCompatible(Donation,Request)
++ List<Match> getAllMatches()
+}
+
+
+class com.relieflink.model.Donation {
+- Long id
+- Long donorId
+- String donorName
+- ItemCategory category
+- String itemName
+- int quantity
+- String location
+- UrgencyLevel urgency
+- String description
+- boolean matched
+- LocalDateTime createdAt
++ Long getId()
++ void setId(Long)
++ Long getDonorId()
++ void setDonorId(Long)
++ String getDonorName()
++ void setDonorName(String)
++ ItemCategory getCategory()
++ void setCategory(ItemCategory)
++ String getItemName()
++ void setItemName(String)
++ int getQuantity()
++ void setQuantity(int)
++ String getLocation()
++ void setLocation(String)
++ UrgencyLevel getUrgency()
++ void setUrgency(UrgencyLevel)
++ String getDescription()
++ void setDescription(String)
++ boolean isMatched()
++ void setMatched(boolean)
++ LocalDateTime getCreatedAt()
++ void setCreatedAt(LocalDateTime)
+}
+
+
+class com.relieflink.service.RequestService {
+- DataStore dataStore
++ Request createRequest(Request)
++ List<Request> getAllRequests()
++ List<Request> getUnmatchedRequests()
+}
+
+
+class com.relieflink.service.DonationService {
+- DataStore dataStore
++ Donation createDonation(Donation)
++ List<Donation> getAllDonations()
++ List<Donation> getUnmatchedDonations()
+}
+
+
+
+
+org.springframework.web.servlet.HandlerInterceptor <|.. com.relieflink.config.AuthInterceptor
+org.springframework.web.servlet.config.annotation.WebMvcConfigurer <|.. com.relieflink.config.WebConfig
+@enduml

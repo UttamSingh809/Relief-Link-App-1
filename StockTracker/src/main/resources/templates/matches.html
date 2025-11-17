@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matches - ReliefLink</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">ReliefLink</div>
+        <div class="nav-links">
+            <a href="/dashboard" id="dashboardLink">Dashboard</a>
+            <a href="/donate" id="donateLink" style="display:none;">Donate</a>
+            <a href="/request" id="requestLink" style="display:none;">Request</a>
+            <a href="/matches" id="matchesLink" style="display:none;">Matches</a>
+            <a href="/guidelines" id="guidelinesLink" style="display:none;">Guidelines</a>
+            <a href="/emergency-contacts" id="emergencyLink" style="display:none;">Emergency</a>
+            <a href="/admin" id="adminLink" style="display:none;">Admin</a>
+            <a href="/logout" id="logoutLink">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Resource Matches & Activity Feed</h1>
+
+        <div id="adminControls" style="display:none;">
+            <button id="findMatchesBtn" class="btn btn-primary">Find New Matches</button>
+        </div>
+
+        <div id="nonAdminMessage" style="display:none;" class="info-message">
+            <p>Matching is managed by coordinators. New matches will appear here automatically.</p>
+        </div>
+
+        <div class="section">
+            <h2>Live Activity Feed</h2>
+            <div id="activityFeed" class="activity-feed"></div>
+        </div>
+
+        <div class="section">
+            <h2>Matched Resources</h2>
+            <div id="matchesList" class="items-list"></div>
+        </div>
+    </div>
+
+    <script src="/js/matches.js"></script>
+</body>
+</html>

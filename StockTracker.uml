@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/bansh/Downloads/ReliefLinkApplication/ReliefLinkApplication</OriginalElement>
+  <nodes>
+    <node x="146.78294573643404" y="-209.0">com.relieflink.model.Donation</node>
+    <node x="-242.0" y="177.0">com.relieflink.controller.AuthController</node>
+    <node x="-224.5" y="328.0">com.relieflink.config.WebConfig</node>
+    <node x="-242.0" y="250.0">com.relieflink.config.AuthInterceptor</node>
+    <node x="153.70930232558135" y="-5.0">com.relieflink.repository.DataStore</node>
+    <node x="563.1240310077519" y="-309.0">com.relieflink.model.ItemCategory</node>
+    <node x="216.7490310077519" y="87.0">com.relieflink.service.MatchingService</node>
+    <node x="-25.5" y="250.0">com.relieflink.controller.DashboardController</node>
+    <node x="-183.6259689922481" y="-209.0">com.relieflink.model.UserRole</node>
+    <node x="387.1240310077519" y="-309.0">com.relieflink.model.UrgencyLevel</node>
+    <node x="565.5" y="-209.0">com.relieflink.model.Request</node>
+    <node x="-166.6259689922481" y="-87.0">com.relieflink.model.User</node>
+    <node x="509.08430232558135" y="-87.0">com.relieflink.model.Match</node>
+    <node x="-145.2509689922481" y="87.0">com.relieflink.service.AuthService</node>
+    <node x="18.74903100775191" y="87.0">com.relieflink.service.DonationService</node>
+    <node x="462.33430232558135" y="87.0">com.relieflink.service.RequestService</node>
+    <node x="325.33527131782944" y="177.0">com.relieflink.controller.ApiController</node>
+    <node x="231.5" y="250.0">com.relieflink.ReliefLinkApplication</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.relieflink.controller.ApiController" target="com.relieflink.repository.DataStore" relationship="TO_ONE">
+      <point x="-38.0" y="-14.0" />
+      <point x="363.33527131782944" y="156.0" />
+      <point x="255.33527131782944" y="156.0" />
+      <point x="255.33527131782944" y="136.0" />
+      <point x="206.2490310077519" y="136.0" />
+      <point x="206.2490310077519" y="65.0" />
+      <point x="217.20930232558135" y="65.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.controller.ApiController" target="com.relieflink.service.DonationService" relationship="TO_ONE">
+      <point x="-38.0" y="-14.0" />
+      <point x="363.33527131782944" y="156.0" />
+      <point x="255.33527131782944" y="156.0" />
+      <point x="255.33527131782944" y="136.0" />
+      <point x="107.24903100775191" y="136.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.service.MatchingService" target="com.relieflink.model.Match" relationship="DEPENDENCY">
+      <point x="44.75" y="-14.0" />
+      <point x="350.9990310077519" y="55.0" />
+      <point x="554.5852713178294" y="55.0" />
+      <point x="554.5852713178294" y="-27.0" />
+      <point x="559.8352713178294" y="-27.0" />
+      <point x="559.8352713178294" y="-37.0" />
+      <point x="582.5843023255813" y="-37.0" />
+      <point x="24.5" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.model.Match" target="com.relieflink.model.Donation" relationship="DEPENDENCY">
+      <point x="24.5" y="-14.0" />
+      <point x="582.5843023255813" y="-109.0" />
+      <point x="560.0852713178294" y="-109.0" />
+      <point x="560.0852713178294" y="-139.0" />
+      <point x="406.2490310077519" y="-139.0" />
+      <point x="406.2490310077519" y="-149.0" />
+      <point x="236.03294573643404" y="-149.0" />
+      <point x="29.75" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.model.Request" target="com.relieflink.model.ItemCategory" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="622.5" y="-230.0" />
+      <point x="640.1240310077519" y="-230.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.model.Request" target="com.relieflink.model.UrgencyLevel" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="622.5" y="-260.0" />
+      <point x="465.1240310077519" y="-260.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.controller.ApiController" target="com.relieflink.service.RequestService" relationship="TO_ONE">
+      <point x="-38.0" y="-14.0" />
+      <point x="363.33527131782944" y="156.0" />
+      <point x="255.33527131782944" y="156.0" />
+      <point x="255.33527131782944" y="136.0" />
+      <point x="547.8343023255813" y="136.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.controller.AuthController" target="com.relieflink.model.User" relationship="DEPENDENCY">
+      <point x="-40.75" y="-14.0" />
+      <point x="-202.25" y="-27.0" />
+      <point x="-144.07364341085275" y="-27.0" />
+      <point x="-21.75" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.service.RequestService" target="com.relieflink.repository.DataStore" relationship="TO_ONE">
+      <point x="-42.75" y="-14.0" />
+      <point x="505.08430232558135" y="65.0" />
+      <point x="217.20930232558135" y="65.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.model.Donation" target="com.relieflink.model.UrgencyLevel" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="206.28294573643404" y="-230.0" />
+      <point x="465.1240310077519" y="-230.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.repository.DataStore" target="com.relieflink.model.Donation" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="217.20930232558135" y="-37.0" />
+      <point x="-41.00096899224809" y="-37.0" />
+      <point x="-41.00096899224809" y="-119.0" />
+      <point x="176.53294573643404" y="-119.0" />
+      <point x="-29.75" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.model.Match" target="com.relieflink.model.ItemCategory" relationship="TO_ONE">
+      <point x="-24.5" y="-14.0" />
+      <point x="533.5843023255813" y="-109.0" />
+      <point x="549.8352713178294" y="-109.0" />
+      <point x="549.8352713178294" y="-149.0" />
+      <point x="707.6240310077519" y="-149.0" />
+      <point x="707.6240310077519" y="-250.0" />
+      <point x="640.1240310077519" y="-250.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.service.MatchingService" target="com.relieflink.repository.DataStore" relationship="TO_ONE">
+      <point x="-44.75" y="-14.0" />
+      <point x="261.4990310077519" y="65.0" />
+      <point x="217.20930232558135" y="65.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.controller.ApiController" target="com.relieflink.model.Match" relationship="DEPENDENCY">
+      <point x="38.0" y="-14.0" />
+      <point x="439.33527131782944" y="156.0" />
+      <point x="501.33527131782944" y="156.0" />
+      <point x="501.33527131782944" y="146.0" />
+      <point x="643.8343023255813" y="146.0" />
+      <point x="643.8343023255813" y="-27.0" />
+      <point x="559.8352713178294" y="-27.0" />
+      <point x="559.8352713178294" y="-37.0" />
+      <point x="582.5843023255813" y="-37.0" />
+      <point x="24.5" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.service.MatchingService" target="com.relieflink.model.Request" relationship="DEPENDENCY">
+      <point x="44.75" y="-14.0" />
+      <point x="350.9990310077519" y="55.0" />
+      <point x="554.5852713178294" y="55.0" />
+      <point x="554.5852713178294" y="45.0" />
+      <point x="735.3740310077519" y="45.0" />
+      <point x="735.3740310077519" y="-159.0" />
+      <point x="651.0" y="-159.0" />
+      <point x="28.5" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.repository.DataStore" target="com.relieflink.model.User" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="217.20930232558135" y="-37.0" />
+      <point x="-101.37596899224809" y="-37.0" />
+      <point x="21.75" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.service.MatchingService" target="com.relieflink.model.Donation" relationship="DEPENDENCY">
+      <point x="44.75" y="-14.0" />
+      <point x="350.9990310077519" y="55.0" />
+      <point x="554.5852713178294" y="55.0" />
+      <point x="554.5852713178294" y="45.0" />
+      <point x="444.0513565891472" y="45.0" />
+      <point x="444.0513565891472" y="-109.0" />
+      <point x="406.2490310077519" y="-109.0" />
+      <point x="406.2490310077519" y="-149.0" />
+      <point x="236.03294573643404" y="-149.0" />
+      <point x="29.75" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.repository.DataStore" target="com.relieflink.model.Request" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="217.20930232558135" y="-37.0" />
+      <point x="468.08430232558135" y="-37.0" />
+      <point x="468.08430232558135" y="-129.0" />
+      <point x="594.0" y="-129.0" />
+      <point x="-28.5" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.service.RequestService" target="com.relieflink.model.Request" relationship="DEPENDENCY">
+      <point x="42.75" y="-14.0" />
+      <point x="590.5843023255813" y="65.0" />
+      <point x="735.3740310077519" y="65.0" />
+      <point x="735.3740310077519" y="-159.0" />
+      <point x="651.0" y="-159.0" />
+      <point x="28.5" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.controller.AuthController" target="com.relieflink.service.AuthService" relationship="TO_ONE">
+      <point x="40.75" y="-14.0" />
+      <point x="-119.75" y="156.0" />
+      <point x="-73.25096899224809" y="156.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.model.Donation" target="com.relieflink.model.ItemCategory" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="206.28294573643404" y="-230.0" />
+      <point x="465.1240310077519" y="-230.0" />
+      <point x="465.1240310077519" y="-240.0" />
+      <point x="640.1240310077519" y="-240.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.service.AuthService" target="com.relieflink.model.User" relationship="DEPENDENCY">
+      <point x="-36.0" y="-14.0" />
+      <point x="-109.25096899224809" y="65.0" />
+      <point x="-83.75096899224809" y="65.0" />
+      <point x="-83.75096899224809" y="-27.0" />
+      <point x="-144.07364341085275" y="-27.0" />
+      <point x="-21.75" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.controller.ApiController" target="com.relieflink.model.Donation" relationship="DEPENDENCY">
+      <point x="38.0" y="-14.0" />
+      <point x="439.33527131782944" y="156.0" />
+      <point x="501.33527131782944" y="156.0" />
+      <point x="501.33527131782944" y="146.0" />
+      <point x="406.2490310077519" y="146.0" />
+      <point x="406.2490310077519" y="-149.0" />
+      <point x="236.03294573643404" y="-149.0" />
+      <point x="29.75" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.model.Match" target="com.relieflink.model.UrgencyLevel" relationship="TO_ONE">
+      <point x="-24.5" y="-14.0" />
+      <point x="533.5843023255813" y="-109.0" />
+      <point x="549.8352713178294" y="-109.0" />
+      <point x="549.8352713178294" y="-149.0" />
+      <point x="454.6240310077519" y="-149.0" />
+      <point x="454.6240310077519" y="-250.0" />
+      <point x="465.1240310077519" y="-250.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.controller.ApiController" target="com.relieflink.model.User" relationship="DEPENDENCY">
+      <point x="38.0" y="-14.0" />
+      <point x="439.33527131782944" y="156.0" />
+      <point x="501.33527131782944" y="156.0" />
+      <point x="501.33527131782944" y="146.0" />
+      <point x="-155.7509689922481" y="146.0" />
+      <point x="-155.7509689922481" y="-27.0" />
+      <point x="-144.07364341085275" y="-27.0" />
+      <point x="-21.75" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.controller.ApiController" target="com.relieflink.service.MatchingService" relationship="TO_ONE">
+      <point x="-38.0" y="-14.0" />
+      <point x="363.33527131782944" y="156.0" />
+      <point x="255.33527131782944" y="156.0" />
+      <point x="255.33527131782944" y="136.0" />
+      <point x="306.2490310077519" y="136.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.controller.ApiController" target="com.relieflink.model.Request" relationship="DEPENDENCY">
+      <point x="38.0" y="-14.0" />
+      <point x="439.33527131782944" y="156.0" />
+      <point x="501.33527131782944" y="156.0" />
+      <point x="501.33527131782944" y="146.0" />
+      <point x="745.8740310077519" y="146.0" />
+      <point x="745.8740310077519" y="-129.0" />
+      <point x="735.3740310077519" y="-129.0" />
+      <point x="735.3740310077519" y="-159.0" />
+      <point x="651.0" y="-159.0" />
+      <point x="28.5" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.service.DonationService" target="com.relieflink.model.Donation" relationship="DEPENDENCY">
+      <point x="-44.25" y="-14.0" />
+      <point x="62.99903100775191" y="55.0" />
+      <point x="7.87403100775191" y="55.0" />
+      <point x="7.87403100775191" y="-109.0" />
+      <point x="406.2490310077519" y="-109.0" />
+      <point x="406.2490310077519" y="-149.0" />
+      <point x="236.03294573643404" y="-149.0" />
+      <point x="29.75" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.config.WebConfig" target="com.relieflink.config.AuthInterceptor" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.model.User" target="com.relieflink.model.UserRole" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.service.DonationService" target="com.relieflink.repository.DataStore" relationship="TO_ONE">
+      <point x="44.25" y="-14.0" />
+      <point x="151.4990310077519" y="65.0" />
+      <point x="217.20930232558135" y="65.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.repository.DataStore" target="com.relieflink.model.Match" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="217.20930232558135" y="-37.0" />
+      <point x="533.5843023255813" y="-37.0" />
+      <point x="-24.5" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.service.AuthService" target="com.relieflink.repository.DataStore" relationship="TO_ONE">
+      <point x="36.0" y="-14.0" />
+      <point x="-37.25096899224809" y="65.0" />
+      <point x="217.20930232558135" y="65.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.relieflink.model.Match" target="com.relieflink.model.Request" relationship="DEPENDENCY">
+      <point x="24.5" y="-14.0" />
+      <point x="582.5843023255813" y="-109.0" />
+      <point x="560.0852713178294" y="-109.0" />
+      <point x="560.0852713178294" y="-119.0" />
+      <point x="735.3740310077519" y="-119.0" />
+      <point x="735.3740310077519" y="-159.0" />
+      <point x="651.0" y="-159.0" />
+      <point x="28.5" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.7422935144941788" showDependencies="true" x="276.0" y="165.0" />
+  <SelectedNodes>
+    <node>com.relieflink.ReliefLinkApplication</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - ReliefLink</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">ReliefLink</div>
+        <div class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/matches">Matches</a>
+            <a href="/guidelines">Guidelines</a>
+            <a href="/emergency-contacts">Emergency</a>
+            <a href="/admin">Admin</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        
+        <div class="admin-actions">
+            <button id="backupBtn" class="btn btn-primary">Backup Data</button>
+            <button id="resetBtn" class="btn btn-danger">Reset System</button>
+        </div>
+
+        <div class="section">
+            <h2>All Users</h2>
+            <div id="usersList" class="items-list"></div>
+        </div>
+    </div>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>

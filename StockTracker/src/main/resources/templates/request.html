@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request - ReliefLink</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">ReliefLink</div>
+        <div class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/donate">Donate</a>
+            <a href="/request">Request</a>
+            <a href="/matches">Matches</a>
+            <a href="/guidelines">Guidelines</a>
+            <a href="/emergency-contacts">Emergency</a>
+            <a href="/admin" id="adminLink" style="display:none;">Admin</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Request Help</h1>
+
+        <form id="requestForm" class="form-card">
+            <div class="form-group">
+                <label>Item Category</label>
+                <select name="category" required>
+                    <option value="">Select category</option>
+                    <option value="FOOD">🍲 Food</option>
+                    <option value="MEDICINE">💊 Medicine</option>
+                    <option value="CLOTHING">👕 Clothing</option>
+                    <option value="SHELTER">🏠 Shelter</option>
+                    <option value="WATER">💧 Water</option>
+                    <option value="MEDICAL_SUPPLIES">🩹 Medical Supplies</option>
+                    <option value="OTHER">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Item Name</label>
+                <input type="text" name="itemName" placeholder="e.g., Rice, Blankets, First Aid Kit" required>
+            </div>
+            <div class="form-group">
+                <label>Quantity</label>
+                <input type="number" name="quantity" min="1" placeholder="How many do you need?" required>
+            </div>
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" name="location" placeholder="City/Region where you need delivery" required>
+            </div>
+            <div class="form-group">
+                <label>Urgency Level</label>
+                <select name="urgency" required>
+                    <option value="">Select urgency</option>
+                    <option value="CRITICAL">🔴 Critical - Immediate need</option>
+                    <option value="HIGH">🟠 High - Urgent</option>
+                    <option value="MEDIUM">🟡 Medium - Soon</option>
+                    <option value="LOW">🟢 Low - When available</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Description (Optional)</label>
+                <textarea name="description" rows="4" placeholder="Additional details about your need"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Request</button>
+        </form>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="/js/request.js"></script>
+</body>
+</html>

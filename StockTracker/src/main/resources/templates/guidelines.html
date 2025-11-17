@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guidelines - ReliefLink</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">ReliefLink</div>
+        <div class="nav-links">
+            <a href="/dashboard" id="dashboardLink">Dashboard</a>
+            <a href="/donate" id="donateLink" style="display:none;">Donate</a>
+            <a href="/request" id="requestLink" style="display:none;">Request</a>
+            <a href="/matches" id="matchesLink" style="display:none;">Matches</a>
+            <a href="/guidelines" id="guidelinesLink" style="display:none;">Guidelines</a>
+            <a href="/emergency-contacts" id="emergencyLink" style="display:none;">Emergency</a>
+            <a href="/admin" id="adminLink" style="display:none;">Admin</a>
+            <a href="/logout" id="logoutLink">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Crisis Response Guidelines</h1>
+
+        <div id="adminControls" style="display:none; margin-bottom: 20px;">
+            <button id="editGuidelinesBtn" class="btn btn-secondary">Edit Guidelines</button>
+            <button id="saveGuidelinesBtn" class="btn btn-primary" style="display:none;">Save Changes</button>
+            <button id="cancelGuidelinesBtn" class="btn btn-secondary" style="display:none;">Cancel</button>
+        </div>
+
+        <div id="guidelinesContent">
+            <!-- Content will be loaded dynamically -->
+        </div>
+    </div>
+
+    <script src="/js/guidelines.js"></script>
+</body>
+</html>
