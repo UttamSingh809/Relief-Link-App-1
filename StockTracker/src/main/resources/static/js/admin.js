@@ -1,8 +1,53 @@
+async function loadAdminPage() {
+    try {
+        // Get user info to check role
+        const userRes = await fetch('/api/user');
+        const user = await userRes.json();
+        const userRole = user.role;
+
+        // Show appropriate navbar links based on role
+        showNavbarLinks(userRole);
+
+        // Load users
+        await loadUsers();
+    } catch (error) {
+        console.error('Error loading admin page:', error);
+    }
+}
+
+function showNavbarLinks(userRole) {
+    // Hide all links first
+    document.getElementById('donateLink').style.display = 'none';
+    document.getElementById('requestLink').style.display = 'none';
+    document.getElementById('matchesLink').style.display = 'none';
+    document.getElementById('guidelinesLink').style.display = 'none';
+    document.getElementById('emergencyLink').style.display = 'none';
+    document.getElementById('adminLink').style.display = 'none';
+
+    // Show appropriate links based on role
+    if (userRole === 'ADMIN') {
+        document.getElementById('matchesLink').style.display = 'inline';
+        document.getElementById('guidelinesLink').style.display = 'inline';
+        document.getElementById('emergencyLink').style.display = 'inline';
+        document.getElementById('adminLink').style.display = 'inline';
+    } else if (userRole === 'DONOR') {
+        document.getElementById('donateLink').style.display = 'inline';
+        document.getElementById('matchesLink').style.display = 'inline';
+        document.getElementById('guidelinesLink').style.display = 'inline';
+        document.getElementById('emergencyLink').style.display = 'inline';
+    } else if (userRole === 'REQUESTER') {
+        document.getElementById('requestLink').style.display = 'inline';
+        document.getElementById('matchesLink').style.display = 'inline';
+        document.getElementById('guidelinesLink').style.display = 'inline';
+        document.getElementById('emergencyLink').style.display = 'inline';
+    }
+}
+
 async function loadUsers() {
     try {
         const response = await fetch('/api/admin/users');
         const users = await response.json();
-        
+
         const usersList = document.getElementById('usersList');
         usersList.innerHTML = users.map(u => `
             <div class="item-card">
@@ -47,4 +92,4 @@ document.getElementById('resetBtn').addEventListener('click', async () => {
     }
 });
 
-loadUsers();
+loadAdminPage();

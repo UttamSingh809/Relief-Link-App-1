@@ -257,8 +257,8 @@ public class MatchingService {
     }
 
     private int compareDonationPriority(Donation d1, Donation d2) {
-        // Prioritize donations that are closer to the requested quantity
-        return Integer.compare(d1.getQuantity(), d2.getQuantity());
+        // Prioritize donations that are fresher (newer first)
+        return d2.getCreatedAt().compareTo(d1.getCreatedAt());
     }
 
     private boolean isCompatible(Donation donation, Request request) {
@@ -266,12 +266,17 @@ public class MatchingService {
         if (donation.getCategory() != request.getCategory()) {
             return false;
         }
-        
+
+        // Check location match (case-insensitive)
+        if (!donation.getLocation().trim().equalsIgnoreCase(request.getLocation().trim())) {
+            return false;
+        }
+
         // Check if donation quantity is sufficient
         if (donation.getQuantity() < request.getQuantity()) {
             return false;
         }
-        
+
         // Check if item names are similar (ignoring case and trimming)
         String donationItem = donation.getItemName().trim().toLowerCase();
         String requestItem = request.getItemName().trim().toLowerCase();
@@ -284,7 +289,7 @@ public class MatchingService {
         if (daysOld > 30) {
             return false;
         }
-        
+
         return true;
     }
 
@@ -337,7 +342,12 @@ public class MatchingService {
         if (donation.getCategory() != request.getCategory()) {
             return false;
         }
-        
+
+        // Check location match (case-insensitive)
+        if (!donation.getLocation().trim().equalsIgnoreCase(request.getLocation().trim())) {
+            return false;
+        }
+
         // Check if item names are similar (ignoring case and trimming)
         String donationItem = donation.getItemName().trim().toLowerCase();
         String requestItem = request.getItemName().trim().toLowerCase();
@@ -350,29 +360,29 @@ public class MatchingService {
         if (daysOld > 30) {
             return false;
         }
-        
+
         return true;
     }
 
     private List<Donation> findCombinableDonations(List<Donation> compatibleDonations, Request request) {
         List<Donation> result = new ArrayList<>();
         int remainingQuantity = request.getQuantity();
-        
-        // Sort donations by quantity to prefer larger donations first
+
+        // Sort donations by freshness (newer first) to prefer fresher items
         List<Donation> sortedDonations = new ArrayList<>(compatibleDonations);
-        sortedDonations.sort((d1, d2) -> Integer.compare(d2.getQuantity(), d1.getQuantity()));
-        
+        sortedDonations.sort((d1, d2) -> d2.getCreatedAt().compareTo(d1.getCreatedAt()));
+
         for (Donation donation : sortedDonations) {
             if (donation.isMatched()) continue;
-            
+
             result.add(donation);
             remainingQuantity -= donation.getQuantity();
-            
+
             if (remainingQuantity <= 0) {
                 break;
             }
         }
-        
+
         // Only return the result if we can fulfill the entire request
         return remainingQuantity <= 0 ? result : new ArrayList<>();
     }

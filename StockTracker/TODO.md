@@ -1,63 +1,26 @@
-# TODO: Remove Primary and Secondary Role Functionality
+# TODO List for Navbar Fix
 
-## Files to Edit
+## Issues Identified
+1. Navbar link arrangement changes when clicking different items due to inconsistent order across templates.
+2. Donors can see the "Request" option on the emergency page (and possibly other pages).
+3. Inconsistent visibility: some pages have links hidden by default with JS control, others don't.
 
-### Java Files
-- [ ] ReliefLinkApplication/src/main/java/com/relieflink/model/User.java
-  - Remove `secondaryRole` field
-  - Remove `secondaryRoleActive` field
-  - Remove `getSecondaryRole()`, `setSecondaryRole()`, `isSecondaryRoleActive()`, `setSecondaryRoleActive()` methods
-  - Update `getActiveRole()` to always return `primaryRole`
-  - Update constructor to remove secondary role initialization
+## Plan
+1. Standardize navbar link order across all templates: Dashboard, Donate, Request, Matches, Guidelines, Emergency, Admin, Logout.
+2. Set all navbar links to `style="display:none;"` by default in all templates, except Dashboard and Logout which are always visible.
+3. Add role-based navbar visibility control to donate.js and request.js.
+4. Ensure emergency.js correctly hides requestLink for DONOR role.
+5. Update all HTML templates to have consistent navbar structure.
 
-- [ ] ReliefLinkApplication/src/main/java/com/relieflink/service/RoleManagementService.java
-  - Remove entire service class (since it's only for secondary roles)
-
-- [ ] ReliefLinkApplication/src/main/java/com/relieflink/controller/RoleManagementController.java
-  - Remove entire controller class
-
-- [ ] ReliefLinkApplication/src/main/java/com/relieflink/controller/AuthController.java
-  - Remove `hasSecondaryRole` from session
-  - Update login response to remove secondaryRole from JSON
-
-- [ ] ReliefLinkApplication/src/main/java/com/relieflink/service/AuthService.java
-  - Remove secondary role initialization in register method
-
-- [ ] ReliefLinkApplication/src/main/java/com/relieflink/repository/DataStore.java
-  - Remove `roleRequests` map and related methods
-  - Remove secondary role initialization in admin user setup
-  - Remove role request related methods
-
-- [ ] ReliefLinkApplication/src/main/java/com/relieflink/model/RoleRequest.java
-  - Remove entire model class
-
-- [ ] ReliefLinkApplication/src/main/java/com/relieflink/model/RoleRequestStatus.java
-  - Remove entire enum class
-
-### Template Files
-- [ ] ReliefLinkApplication/src/main/resources/templates/register.html
-  - Update label from "Primary Role" to "Role"
-  - Update select name from "primaryRole" to "role"
-
-- [ ] ReliefLinkApplication/src/main/resources/templates/request.html
-  - No changes needed (already uses "Primary Role" but it's just a label)
-
-### JavaScript Files
-- [ ] ReliefLinkApplication/src/main/resources/static/js/register.js
-  - Change `primaryRole` to `role` in data object
-  - Remove `secondaryRole` and `secondaryRoleActive` from data object
-
-- [ ] ReliefLinkApplication/src/main/resources/static/js/login.js
-  - Remove secondary role display logic
-  - Simplify role message to only show primary role
-
-### Database Migration
-- [ ] ReliefLinkApplication/src/main/resources/db/migration/V1__Initial_Schema.sql
-  - Remove secondary role columns from users table
-  - Remove role_requests table
-
-## Followup Steps
-- [ ] Test registration and login functionality
-- [ ] Verify that users only have one role
-- [ ] Ensure no references to secondary roles remain
-- [ ] Run the application to confirm everything works
+## Tasks
+- [x] Update dashboard.html navbar to standard order and hide all links except Dashboard/Logout.
+- [x] Update donate.html navbar to standard order and hide all links except Dashboard/Logout.
+- [x] Update request.html navbar to standard order and hide all links except Dashboard/Logout.
+- [x] Update emergency-contacts.html navbar to standard order (already hidden).
+- [x] Update matches.html navbar to standard order (already hidden).
+- [x] Update guidelines.html navbar to standard order (already hidden).
+- [x] Update admin.html navbar to standard order and hide all links except Dashboard/Logout.
+- [x] Add showNavbarLinks function to donate.js and call it on load.
+- [x] Add showNavbarLinks function to request.js and call it on load.
+- [x] Add showNavbarLinks function to admin.js and call it on load.
+- [x] Verify that for DONOR role, requestLink is hidden on all pages.
